@@ -3,9 +3,7 @@
 namespace Database\Seeders;
 
 use App\Http\Integrations\PokemonTcg\PokemonTcg;
-use App\Http\Integrations\PokemonTcg\Requests\GetRaritiesRequest;
 use App\Http\Integrations\PokemonTcg\Requests\GetSetsRequest;
-use App\Models\Rarity;
 use App\Models\Set;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
