@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Integrations\PokemonTcg\Requests\GetCardsRequest;
 use App\Models\Card;
 use App\Models\User;
 use Livewire\Volt\Volt;
@@ -18,7 +17,7 @@ test('cannot search without session', function () {
 });
 
 test('can search for pokemon', function () {
-   Card::createFromApi(json_decode(file_get_contents(__DIR__.'/../../cards.json'), true)[0]);
+    Card::createFromApi(json_decode(file_get_contents(__DIR__ . '/../../cards.json'), true)[0]);
 
     Volt::test('pages.search')
         ->set('query', 'Aggron')
@@ -27,7 +26,7 @@ test('can search for pokemon', function () {
 });
 
 test('can add new pokemon to personal dex', function () {
-    $card = Card::createFromApi(json_decode(file_get_contents(__DIR__.'/../../cards.json'), true)[0]);
+    $card = Card::createFromApi(json_decode(file_get_contents(__DIR__ . '/../../cards.json'), true)[0]);
     $user = User::factory()->create();
 
     Volt::actingAs($user)

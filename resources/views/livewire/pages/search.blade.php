@@ -29,7 +29,7 @@ $addToDex = function ($id) {
     </form>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        @foreach($results as $card)
+        @foreach ($results as $card)
         <div id="{{ $card->external_id }}" class="group relative">
             <img src="{{ $card->images['small'] }}" alt="{{ $card->name }} - {{ $card->flavor_text ?? '' }}" class="shadow rounded-xl">
             <div class="sr-only">
