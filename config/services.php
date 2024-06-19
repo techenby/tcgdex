@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'pokemon_tcg' => [
+        'key' => env('POKEMON_TCG_KEY'),
+    ],
+
 ];
