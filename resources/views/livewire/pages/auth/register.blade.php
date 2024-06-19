@@ -51,7 +51,7 @@ $register = function () {
         <x-form.group name="password" type="password" wire:model="password" required autocomplete="new-password" />
 
         <!-- Confirm Password -->
-        <x-form.group name="password_confirmation" label="Confirm Password" type="password" wire:model="password" required autocomplete="new-password" />
+        <x-form.group name="password_confirmation" label="Confirm Password" type="password" wire:model="password_confirmation" required autocomplete="new-password" />
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}" wire:navigate>
