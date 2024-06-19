@@ -16,11 +16,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            TypesSeeder::class,
-            SubtypesSeeder::class,
-            SupertypesSeeder::class,
-            RaritiesSeeder::class,
-            SetsSeeder::class,
+            // TypesSeeder::class,
+            // SubtypesSeeder::class,
+            // SupertypesSeeder::class,
+            // RaritiesSeeder::class,
+            // SetsSeeder::class,
+            CardsSeeder::class,
         ]);
     }
 }

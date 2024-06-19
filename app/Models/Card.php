@@ -12,31 +12,39 @@ class Card extends Model
 
     protected $guarded = [];
 
+    public static function makeFromApi($data)
+    {
+        return static::make([
+            'external_id' => $data['id'],
+            'rarity' => data_get($data, 'rarity'),
+            'supertype' => data_get($data, 'supertype'),
+            'set_id' => data_get($data, 'set.id'),
+            'name' => data_get($data, 'name'),
+            'hp' => data_get($data, 'hp'),
+            'types' => data_get($data, 'types'),
+            'subtypes' => data_get($data, 'subtypes'),
+            'converted_retreat_cost' => data_get($data, 'convertedRetreatCost'),
+            'number' => data_get($data, 'number'),
+            'artist' => data_get($data, 'artist'),
+            'flavor_text' => data_get($data, 'flavorText'),
+            'attacks' => data_get($data, 'attacks'),
+            'evolves_from' => data_get($data, 'evolvesFrom'),
+            'images' => data_get($data, 'images'),
+            'legalities' => data_get($data, 'legalities'),
+            'national_pokedex_numbers' => data_get($data, 'nationalPokedexNumbers'),
+            'retreat_cost' => data_get($data, 'retreatCost'),
+            'rules' => data_get($data, 'rules'),
+            'weaknesses' => data_get($data, 'weaknesses'),
+            'resistances' => data_get($data, 'resistances'),
+        ]);
+    }
+
     public static function createFromApi($data)
     {
-        return static::create([
-            'external_id' => $data['id'],
-            'rarity_id' => Rarity::findOrCreate($data['rarity'])->id,
-            'supertype_id' => Supertype::findOrCreate($data['supertype'])->id,
-            'set_id' => Set::findByExternalId($data['set']['id'])->id,
-            'name' => $data['name'],
-            'hp' => $data['hp'],
-            'types' => implode(',', $data['types']),
-            'subtypes' => implode(',', $data['subtypes']),
-            'converted_retreat_cost' => $data['convertedRetreatCost'],
-            'number' => $data['number'],
-            'artist' => $data['artist'],
-            'flavor_text' => $data['flavorText'],
-            'attacks' => $data['attacks'],
-            'evolves_from' => $data['evolvesFrom'],
-            'images' => $data['images'],
-            'legalities' => $data['legalities'],
-            'national_pokedex_numbers' => implode(',', $data['nationalPokedexNumbers']),
-            'retreat_cost' => $data['retreatCost'],
-            'rules' => data_get($data, 'rules'),
-            'weaknesses' => collect(data_get($data, 'weaknesses'))->mapWithKeys(fn ($item) => [$item['type'] => $item['value']])->toArray(),
-            'resistances' => collect(data_get($data, 'resistances'))->mapWithKeys(fn ($item) => [$item['type'] => $item['value']])->toArray(),
-        ]);
+        $card = static::makeFromApi($data);
+        $card->save();
+
+        return $card;
     }
 
     public function rarity(): BelongsTo
@@ -57,12 +65,19 @@ class Card extends Model
     protected function casts(): array
     {
         return [
-            'attacks' => 'array',
-            'images' => 'array',
-            'legalities' => 'array',
+            'subtypes' => 'array',
+            'types' => 'array',
+            'evolves_to' => 'array',
+            'rules' => 'array',
             'retreat_cost' => 'array',
+            'ancient_trait' => 'array',
+            'abilities' => 'array',
+            'attacks' => 'array',
             'weaknesses' => 'array',
             'resistances' => 'array',
+            'national_pokedex_numbers' => 'array',
+            'legalities' => 'array',
+            'images' => 'array',
         ];
     }
 }

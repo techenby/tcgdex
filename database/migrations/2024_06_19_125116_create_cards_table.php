@@ -10,28 +10,32 @@ return new class extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->string('external_id')->unique();
-            $table->foreignId('rarity_id');
-            $table->foreignId('supertype_id');
-            $table->foreignId('set_id');
+            $table->string('external_id');
             $table->string('name');
-            $table->integer('hp');
-            $table->string('types');
-            $table->string('subtypes');
-            $table->integer('converted_retreat_cost');
-            $table->integer('number');
-            $table->string('artist');
-            $table->string('flavor_text');
-            $table->string('national_pokedex_numbers')->nullable();
-            $table->json('attacks');
+            $table->string('supertype');
+            $table->string('level')->nullable();
+            $table->string('hp')->nullable();
             $table->string('evolves_from')->nullable();
+            $table->integer('converted_retreat_cost')->nullable();
+            $table->string('number');
+            $table->string('artist')->nullable();
+            $table->string('rarity')->nullable();
+            $table->string('flavor_text')->nullable();
+            $table->string('regulation_mark')->nullable();
+            $table->json('subtypes')->nullable();
+            $table->json('types')->nullable();
             $table->json('evolves_to')->nullable();
-            $table->json('legalities')->nullable();
-            $table->json('images')->nullable();
-            $table->json('retreat_cost')->nullable();
             $table->json('rules')->nullable();
+            $table->json('retreat_cost')->nullable();
+            $table->string('set_id');
+            $table->json('ancient_trait')->nullable();
+            $table->json('abilities')->nullable();
+            $table->json('attacks')->nullable();
             $table->json('weaknesses')->nullable();
             $table->json('resistances')->nullable();
+            $table->json('national_pokedex_numbers')->nullable();
+            $table->json('legalities');
+            $table->json('images');
             $table->timestamps();
         });
     }

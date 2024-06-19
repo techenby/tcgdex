@@ -14,6 +14,10 @@ class TypesSeeder extends Seeder
         $tcg = new PokemonTcg;
         $tcg->send(new GetTypesRequest)
             ->collect('data')
-            ->each(fn ($type) => Type::create(['name' => $type]));
+            ->each(function ($type) {
+                if (! Type::where('name', $type)->exists()) {
+                    Type::create(['name' => $type]);
+                }
+            });
     }
 }

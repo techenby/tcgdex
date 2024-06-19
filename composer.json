@@ -11,6 +11,7 @@
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0",
         "saloonphp/laravel-plugin": "^3.0",
+        "saloonphp/pagination-plugin": "^2.0",
         "saloonphp/saloon": "^3.0"
     },
     "require-dev": {
