@@ -21,15 +21,17 @@ return new class extends Migration
             $table->integer('converted_retreat_cost');
             $table->integer('number');
             $table->string('artist');
+            $table->string('flavor_text');
+            $table->string('national_pokedex_numbers')->nullable();
             $table->json('attacks');
-            $table->string('evolves_from');
-            $table->json('evolves_to');
-            $table->json('images');
-            $table->json('legalities');
-            $table->string('national_pokedex_numbers');
-            $table->json('retreat_cost');
-            $table->json('rules');
-            $table->json('weaknesses');
+            $table->string('evolves_from')->nullable();
+            $table->json('evolves_to')->nullable();
+            $table->json('legalities')->nullable();
+            $table->json('images')->nullable();
+            $table->json('retreat_cost')->nullable();
+            $table->json('rules')->nullable();
+            $table->json('weaknesses')->nullable();
+            $table->json('resistances')->nullable();
             $table->timestamps();
         });
     }

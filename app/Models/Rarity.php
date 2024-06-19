@@ -10,4 +10,9 @@ class Rarity extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public static function findOrCreate($name)
+    {
+        return static::firstOrCreate(['name' => $name]);
+    }
 }

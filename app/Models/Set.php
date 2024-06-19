@@ -11,6 +11,11 @@ class Set extends Model
 
     protected $guarded = [];
 
+    public static function findByExternalId($id)
+    {
+        return static::firstWhere(['external_id' => $id]);
+    }
+
     protected function casts(): array
     {
         return [
