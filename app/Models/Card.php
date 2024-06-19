@@ -12,9 +12,9 @@ class Card extends Model
 
     protected $guarded = [];
 
-    public static function makeFromApi($data)
+    public static function createFromApi($data)
     {
-        return static::make([
+        return static::create([
             'external_id' => $data['id'],
             'rarity' => data_get($data, 'rarity'),
             'supertype' => data_get($data, 'supertype'),
@@ -37,14 +37,6 @@ class Card extends Model
             'weaknesses' => data_get($data, 'weaknesses'),
             'resistances' => data_get($data, 'resistances'),
         ]);
-    }
-
-    public static function createFromApi($data)
-    {
-        $card = static::makeFromApi($data);
-        $card->save();
-
-        return $card;
     }
 
     public function rarity(): BelongsTo
