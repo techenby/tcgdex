@@ -191,10 +191,14 @@ return [
                             'name' => 'hp',
                             'type' => 'string',
                         ],
+                        [
+                            'name' => 'attacks',
+                            'type' => 'string',
+                        ],
                     ],
                 ],
                 'search-parameters' => [
-                    'query_by' => 'name',
+                    'query_by' => 'name, hp, attacks',
                 ],
             ],
         ],

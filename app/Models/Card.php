@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -62,6 +63,7 @@ class Card extends Model
             'id' => (string) $this->id,
             'name' => $this->name,
             'hp' => (string) $this->hp,
+            'attacks' => $this->attacks?->implode("name", ", ") ?? '',
         ]);
     }
 
@@ -75,7 +77,7 @@ class Card extends Model
             'retreat_cost' => 'array',
             'ancient_trait' => 'array',
             'abilities' => 'array',
-            'attacks' => 'array',
+            'attacks' => AsCollection::class,
             'weaknesses' => 'array',
             'resistances' => 'array',
             'national_pokedex_numbers' => 'array',

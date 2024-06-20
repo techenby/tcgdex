@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Integrations\PokemonTcg\PokemonTcg;
-use App\Http\Integrations\PokemonTcg\Requests\GetCardsRequest;
 use App\Models\Card;
 
 use function Livewire\Volt\{layout, state, computed, usesPagination};
@@ -23,10 +21,10 @@ $addToDex = function ($id) {
 ?>
 
 <div>
-    <div class="py-12 px-4 space-y-8">
+    <div class="py-12 px-8 space-y-8">
         <form wire:submit="search" class="relative max-w-md mx-auto rounded-full ">
             <label for="query" class="sr-only">Search for Cards</label>
-            <x-form.input wire:model.live="query" type="text" placeholder="Search by name, HP and more" class="w-full py-4 rounded-full md:text-lg md:py-4 md:px-6" />
+            <x-form.input wire:model.live="query" type="text" placeholder="Search by Name, HP and/or Attack" class="w-full py-4 rounded-full md:text-lg md:py-4 md:px-6" />
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-6">
                 <svg xmlns="http://www.w3.org/2000/svg" class="size-7 stroke-gray-700 dark:stroke-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
