@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Scout\Searchable;
 
 class Card extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $guarded = [];
 
@@ -52,6 +54,15 @@ class Card extends Model
     public function supertype(): BelongsTo
     {
         return $this->belongsTo(Supertype::class);
+    }
+
+    public function toSearchableArray()
+    {
+        return array_merge($this->toArray(),[
+            'id' => (string) $this->id,
+            'name' => $this->name,
+            'hp' => (string) $this->hp,
+        ]);
     }
 
     protected function casts(): array
