@@ -35,7 +35,7 @@ class User extends Authenticatable
 
     public function cards(): BelongsToMany
     {
-        return $this->belongsToMany(Card::class)->withTimestamps();
+        return $this->belongsToMany(Card::class)->withPivot('id')->withTimestamps();
     }
 
     /**

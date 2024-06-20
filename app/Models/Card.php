@@ -59,19 +59,19 @@ class Card extends Model
 
     public function toSearchableArray()
     {
-        return array_merge($this->toArray(),[
+        return array_merge($this->toArray(), [
             'id' => (string) $this->id,
             'name' => $this->name,
             'hp' => (string) $this->hp,
-            'attacks' => $this->attacks?->implode("name", ", ") ?? '',
+            'attacks' => $this->attacks?->implode('name', ', ') ?? '',
         ]);
     }
 
     protected function casts(): array
     {
         return [
-            'subtypes' => 'array',
-            'types' => 'array',
+            'subtypes' => AsCollection::class,
+            'types' => AsCollection::class,
             'evolves_to' => 'array',
             'rules' => 'array',
             'retreat_cost' => 'array',

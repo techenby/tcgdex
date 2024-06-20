@@ -10,6 +10,10 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Volt::route('dex', 'pages.dex')
+    ->middleware(['auth', 'verified'])
+    ->name('dex');
+
 Volt::route('search', 'pages.search')
     ->middleware(['auth', 'verified'])
     ->name('search');
