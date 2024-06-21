@@ -11,7 +11,7 @@ layout('layouts.app');
 
 state([
     'style' => 'table',
-]);
+])->url();
 
 $cards = computed(function () {
     return auth()->user()->cards->groupBy("id")->map(function ($group) {
