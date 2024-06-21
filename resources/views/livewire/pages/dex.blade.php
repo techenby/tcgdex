@@ -15,9 +15,9 @@ state([
 
 $cards = computed(function () {
     return auth()->user()->cards->groupBy("id")->map(function ($group) {
-        $first = $group->first();
-        $first->count = $group->count();
-        return $first;
+        $last = $group->last();
+        $last->count = $group->count();
+        return $last;
     });
 });
 
