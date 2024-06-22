@@ -14,7 +14,7 @@ state([
 ])->url();
 
 $cards = computed(function () {
-    return auth()->user()->cards->groupBy("id")->map(function ($group) {
+    return auth()->user()->cards->load('set')->groupBy("id")->map(function ($group) {
         $last = $group->last();
         $last->count = $group->count();
         return $last;
@@ -23,9 +23,9 @@ $cards = computed(function () {
 
 $setStyle = fn ($style) => $this->style = $style;
 
-$increase = fn ($cardId) => auth()->user()->cards()->attach($cardId);
+$add = fn ($cardId) => auth()->user()->cards()->attach($cardId);
 
-$reduce = fn ($pivotId) => DB::table('card_user')->whereId($pivotId)->delete();
+$sub = fn ($pivotId) => DB::table('card_user')->whereId($pivotId)->delete();
 
 ?>
 
@@ -46,7 +46,7 @@ $reduce = fn ($pivotId) => DB::table('card_user')->whereId($pivotId)->delete();
     @if ($style === 'grid')
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
         @foreach ($this->cards as $card)
-        <livewire:card :card=$card wire:key="{{ $card->id }}" />
+        <x-card :card=$card wire:key="{{ $card->id }}" />
         @endforeach
     </div>
     @else
