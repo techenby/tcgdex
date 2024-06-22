@@ -11,6 +11,8 @@ class Deck extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function cards(): BelongsToMany
     {
         return $this->belongsToMany(Card::class);
