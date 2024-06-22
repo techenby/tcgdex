@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->string('external_id');
+            $table->foreignId('set_id');
             $table->string('name');
             $table->string('supertype');
             $table->string('level')->nullable();
@@ -27,7 +28,6 @@ return new class extends Migration
             $table->json('evolves_to')->nullable();
             $table->json('rules')->nullable();
             $table->json('retreat_cost')->nullable();
-            $table->string('set_id');
             $table->json('ancient_trait')->nullable();
             $table->json('abilities')->nullable();
             $table->json('attacks')->nullable();

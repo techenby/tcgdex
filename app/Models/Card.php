@@ -21,7 +21,9 @@ class Card extends Model
             'external_id' => $data['id'],
             'rarity' => data_get($data, 'rarity'),
             'supertype' => data_get($data, 'supertype'),
-            'set_id' => data_get($data, 'set.id'),
+            'set_id' => value(function ($id) {
+                return Set::select('id')->firstWhere('external_id', $id)->id;
+            }, data_get($data, 'set.id')),
             'name' => data_get($data, 'name'),
             'hp' => data_get($data, 'hp'),
             'types' => data_get($data, 'types'),

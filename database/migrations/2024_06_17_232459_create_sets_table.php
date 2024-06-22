@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('sets', function (Blueprint $table) {
             $table->id();
-            $table->string('external_id');
+            $table->string('external_id')->index();
             $table->string('name');
             $table->string('series');
             $table->integer('printed_total');
