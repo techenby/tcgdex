@@ -19,7 +19,7 @@ class DeckForm extends Form
 
         $deck = auth()->user()->decks()->create([
             'name' => $this->name,
-             'notes' => $this->notes,
+            'notes' => $this->notes,
         ]);
 
         dd($deck);

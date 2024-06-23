@@ -10,6 +10,7 @@
     </div>
     <div class="absolute rounded-xl top-0 left-0 w-full h-full flex flex-col justify-center items-center backdrop-blur-sm bg-sky-700/70 border-8 border-sky-700 opacity-0 group-hover:opacity-100 duration-500">
         <p class="text-center text-white">{{ $card->set->name }}</p>
+        <p class="text-center text-white">{{ Str::padLeft($card->number, 3, 0) }}/{{ Str::padLeft($card->set->printed_total, 3, 0) }}</p>
     </div>
     <div class="absolute inset-x-0 flex items-center justify-between px-4 -bottom-2 h-8">
         <x-btn.icon-pill wire:click="add('{{ $card->id }}')" wire:loading.attr="disabled" icon="heroicon-o-plus-small" class="opacity-0 group-hover:opacity-100">Add</x-btn.icon-pill>
