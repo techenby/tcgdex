@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 /*
@@ -43,7 +44,12 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function buildWorld()
 {
-    // ..
+    foreach (func_get_args() as $class) {
+        $string = Str::plural(strtolower(class_basename($class)));
+        $path = base_path("tests/{$string}.json");
+        $records = json_decode(file_get_contents($path), true);
+        $class::factory()->createMany($records);
+    }
 }

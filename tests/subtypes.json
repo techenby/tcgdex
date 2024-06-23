@@ -1,0 +1,248 @@
+[
+  {
+    "id": 1,
+    "name": "ACE SPEC",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 2,
+    "name": "Ancient",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 3,
+    "name": "BREAK",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 4,
+    "name": "Baby",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 5,
+    "name": "Basic",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 6,
+    "name": "EX",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 7,
+    "name": "Eternamax",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 8,
+    "name": "Fusion Strike",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 9,
+    "name": "Future",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 10,
+    "name": "GX",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 11,
+    "name": "Goldenrod Game Corner",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 12,
+    "name": "Item",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 13,
+    "name": "LEGEND",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 14,
+    "name": "Level-Up",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 15,
+    "name": "MEGA",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 16,
+    "name": "Pokémon Tool",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 17,
+    "name": "Pokémon Tool F",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 18,
+    "name": "Prime",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 19,
+    "name": "Prism Star",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 20,
+    "name": "Radiant",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 21,
+    "name": "Rapid Strike",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 22,
+    "name": "Restored",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 23,
+    "name": "Rocket's Secret Machine",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 24,
+    "name": "SP",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 25,
+    "name": "Single Strike",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 26,
+    "name": "Special",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 27,
+    "name": "Stadium",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 28,
+    "name": "Stage 1",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 29,
+    "name": "Stage 2",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 30,
+    "name": "Star",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 31,
+    "name": "Supporter",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 32,
+    "name": "TAG TEAM",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 33,
+    "name": "Team Plasma",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 34,
+    "name": "Technical Machine",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 35,
+    "name": "Tera",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 36,
+    "name": "Ultra Beast",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 37,
+    "name": "V",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 38,
+    "name": "V-UNION",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 39,
+    "name": "VMAX",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 40,
+    "name": "VSTAR",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 41,
+    "name": "ex",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  }
+]

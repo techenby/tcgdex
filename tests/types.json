@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Colorless",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 2,
+    "name": "Darkness",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 3,
+    "name": "Dragon",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 4,
+    "name": "Fairy",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 5,
+    "name": "Fighting",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 6,
+    "name": "Fire",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 7,
+    "name": "Grass",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 8,
+    "name": "Lightning",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 9,
+    "name": "Metal",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 10,
+    "name": "Psychic",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  },
+  {
+    "id": 11,
+    "name": "Water",
+    "created_at": "2024-06-21 23:49:25",
+    "updated_at": "2024-06-21 23:49:25"
+  }
+]
