@@ -41,17 +41,17 @@ class PtcgoImporter
                 'card_id' => $card->id,
             ];
         })->map(function ($item) {
-            if ($item["count"] === 1) {
-              return [$item["card_id"]];
+            if ($item['count'] === 1) {
+                return [$item['card_id']];
             }
 
             $ids = [];
-            for ($i = 0; $i < $item["count"]; $i++) {
-              $ids[] = $item["card_id"];
+            for ($i = 0; $i < $item['count']; $i++) {
+                $ids[] = $item['card_id'];
             }
 
             return $ids;
-          })
-          ->flatten();
+        })
+            ->flatten();
     }
 }
