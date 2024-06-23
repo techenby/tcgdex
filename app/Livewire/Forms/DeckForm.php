@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\PtcgoImporter;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -10,7 +11,6 @@ class DeckForm extends Form
     #[Validate('required|min:5')]
     public $name = '';
 
-    #[Validate('required|min:5')]
     public $notes = '';
 
     public function store()
@@ -19,9 +19,11 @@ class DeckForm extends Form
 
         $deck = auth()->user()->decks()->create([
             'name' => $this->name,
-            'notes' => $this->notes,
         ]);
 
-        dd($deck);
+        if (! empty($this->notes)) {
+            $cards = PtcgoImporter::getCards($this->notes);
+            $deck->cards()->attach($cards);
+        }
     }
 }

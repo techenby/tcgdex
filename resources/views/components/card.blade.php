@@ -15,6 +15,8 @@
     <div class="absolute inset-x-0 flex items-center justify-between px-4 -bottom-2 h-8">
         <x-btn.icon-pill wire:click="add('{{ $card->id }}')" wire:loading.attr="disabled" icon="heroicon-o-plus-small" class="opacity-0 group-hover:opacity-100">Add</x-btn.icon-pill>
         <div class="size-8 flex items-center justify-center shadow bg-white dark:text-gray-100 dark:bg-gray-800 border-2 rounded-full">{{ $card['count'] }}</div>
+        @isset($card->pivot)
         <x-btn.icon-pill wire:click="sub('{{ $card->pivot->id }}')" wire:loading.attr="disabled" icon="heroicon-o-minus-small" class="opacity-0 group-hover:opacity-100">Remove</x-btn.icon-pill>
+        @endisset
     </div>
 </div>

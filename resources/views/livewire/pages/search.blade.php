@@ -14,9 +14,9 @@ state([
 
 $cards = computed(fn () => Card::search($this->query)->paginate(10));
 
-$addToDex = function ($id) {
-    auth()->user()->cards()->attach($id);
-};
+$add = fn ($cardId) => auth()->user()->cards()->attach($cardId);
+
+$sub = fn ($pivotId) => DB::table('card_user')->whereId($pivotId)->delete();
 
 ?>
 
@@ -30,20 +30,7 @@ $addToDex = function ($id) {
         @if ($query !== '')
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
             @foreach ($this->cards as $card)
-            <div id="{{ $card->external_id }}" class="group relative">
-                <img src="{{ $card->images['small'] }}" alt="{{ $card->name }} - {{ $card->flavor_text ?? '' }}" class="shadow rounded-xl">
-                <div class="sr-only">
-                    <dl>
-                        <dt>Name</dt>
-                        <dd>{{ $card->name }}</dd>
-                        <dt>HP</dt>
-                        <dd>{{ $card->hp }}</dd>
-                    </dl>
-                </div>
-                <div class="absolute rounded-xl top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-sky-700 opacity-0 group-hover:opacity-100 duration-500">
-                    <button wire:click="addToDex('{{ $card['id'] }}')" wire:loading.attr="disabled">Add<span wire:loading>ing</span></button>
-                </div>
-            </div>
+            <x-card :wire:key="$card->id" :card=$card />
             @endforeach
         </div>
         {{ $this->cards->links() }}

@@ -12,15 +12,22 @@ $decks = computed(fn () => auth()->user()->decks()->withCount('cards')->get());
 
 $create = function () {
     $this->form->store();
+
+    $this->form->reset();
+};
+
+$delete = function ($id) {
+    $this->decks->firstWhere('id', $id)->delete();
+    $this->emit('$refresh');
 };
 
 ?>
 
-<x-ui.container>
-    <form wire:submit="create" class="space-y-4 bg-white dark:bg-gray-800 p-4 rounded-md max-w-md">
+<x-ui.container class="space-y-8">
+    <form wire:submit="create" class="space-y-4 bg-white dark:bg-gray-800 p-4 rounded-md shadow max-w-md">
         <h2 class="text-lg text-gray-900 dark:text-gray-100">Add Deck</h2>
-        <x-form.group name="name" wire:model="name" type="text" />
-        <x-form.group name="notes" wire:model="notes" type="textarea" />
+        <x-form.group name="name" wire:model="form.name" type="text" />
+        <x-form.group name="notes" wire:model="form.notes" type="textarea" />
 
         <x-primary-button>Save</x-primary-button>
     </form>
@@ -41,7 +48,9 @@ $create = function () {
                 <x-table.td>{{ $deck->name }}</x-table.td>
                 <x-table.td>{{ $deck->cards_count }}</x-table.td>
                 <x-table.td>
-                    //
+                    <button type="button" wire:click="delete({{ $deck->id }})">
+                        Delete
+                    </button>
                 </x-table.td>
             </tr>
             @endforeach
