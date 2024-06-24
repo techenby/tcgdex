@@ -10,7 +10,7 @@ layout('layouts.app');
 form(DeckForm::class);
 
 
-$decks = computed(fn () => auth()->user()->decks()->withCount('cards')->get());
+$decks = computed(fn () => auth()->user()->decks()->with('cards')->get());
 
 $create = function () {
     $this->form->store();
@@ -38,7 +38,10 @@ $delete = function ($id) {
         <x-slot:thead>
             <tr>
                 <x-table.th>Name</x-table.th>
-                <x-table.th>Count</x-table.th>
+                <x-table.th>Pokémon</x-table.th>
+                <x-table.th>Trainer</x-table.th>
+                <x-table.th>Energy</x-table.th>
+                <x-table.th>Total</x-table.th>
                 <x-table.th>
                     <span class="sr-only">Edit</span>
                 </x-table.th>
@@ -48,7 +51,10 @@ $delete = function ($id) {
             @foreach ($this->decks as $deck)
             <tr>
                 <x-table.td>{{ $deck->name }}</x-table.td>
-                <x-table.td>{{ $deck->cards_count }}</x-table.td>
+                <x-table.td>{{ $deck->cards->where('supertype', 'Pokémon')->count() }}</x-table.td>
+                <x-table.td>{{ $deck->cards->where('supertype', 'Trainer')->count() }}</x-table.td>
+                <x-table.td>{{ $deck->cards->where('supertype', 'Energy')->count() }}</x-table.td>
+                <x-table.td>{{ $deck->cards->count() }}</x-table.td>
                 <x-table.td class="space-x-2">
                     <a href="{{ route('decks.edit', $deck) }}">Edit</a>
                     <button type="button" wire:click="delete({{ $deck->id }})">

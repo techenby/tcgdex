@@ -2,6 +2,7 @@
 
 use App\Models\Card;
 use App\Models\Deck;
+use Illuminate\Support\Facades\DB;
 
 use function Livewire\Volt\{computed, layout, mount, state, title, usesPagination};
 
@@ -18,6 +19,10 @@ mount(function ($id) {
 
 $collection = computed(fn () => $this->deck->collection());
 $cards = computed(fn () => Card::search($this->query)->paginate(10));
+
+$add = fn ($cardId) => $this->deck->cards()->attach($cardId);
+
+$sub = fn ($pivotId) => DB::table('card_deck')->whereId($pivotId)->delete();
 
 ?>
 
