@@ -1,25 +1,23 @@
 <?php
 
 use App\Models\Card;
-use Illuminate\Support\Facades\DB;
+use App\Models\Deck;
 
-use function Livewire\Volt\{computed, layout, state, title, usesPagination};
+use function Livewire\Volt\{computed, layout, mount, state, title, usesPagination};
 
 usesPagination();
 
-title('Search All Cards');
+title(fn () => $this->deck->name . ' Deck');
 layout('layouts.app');
 
-state([
-    'query' => '',
-]);
+state(['deck', 'query' => '']);
 
-$collection = computed(fn () => auth()->user()->collection());
+mount(function ($id) {
+    $this->deck = Deck::find($id);
+});
+
+$collection = computed(fn () => $this->deck->collection());
 $cards = computed(fn () => Card::search($this->query)->paginate(10));
-
-$add = fn ($cardId) => auth()->user()->cards()->attach($cardId);
-
-$sub = fn ($pivotId) => DB::table('card_user')->whereId($pivotId)->delete();
 
 ?>
 
@@ -28,7 +26,6 @@ $sub = fn ($pivotId) => DB::table('card_user')->whereId($pivotId)->delete();
         <form wire:submit="search" class="relative max-w-md mx-auto rounded-full ">
             <x-form.search />
         </form>
-
 
         @if ($query !== '')
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">

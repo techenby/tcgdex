@@ -9,8 +9,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('card_deck', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('card_id');
             $table->foreignId('deck_id');
+            $table->timestamps();
         });
     }
 

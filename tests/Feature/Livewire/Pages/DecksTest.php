@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\User;
 use Livewire\Volt\Volt;
 
 it('can render', function () {
-    $component = Volt::test('pages.decks');
+    $component = Volt::actingAs(User::factory()->create())->test('pages.decks');
 
     $component->assertSee('');
 });

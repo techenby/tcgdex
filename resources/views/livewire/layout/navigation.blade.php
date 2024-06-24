@@ -24,11 +24,14 @@ $logout = function (Logout $logout) {
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('search')" :active="request()->routeIs('search')" wire:navigate>
+                        {{ __('Search') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('dex')" :active="request()->routeIs('dex')" wire:navigate>
                         {{ __('CardDex') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('search')" :active="request()->routeIs('search')" wire:navigate>
-                        {{ __('Search') }}
+                    <x-nav-link :href="route('decks')" :active="request()->routeIs('decks')" wire:navigate>
+                        {{ __('Decks') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -78,11 +81,14 @@ $logout = function (Logout $logout) {
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('search')" :active="request()->routeIs('search')" wire:navigate>
+                {{ __('Search') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dex')" :active="request()->routeIs('dex')" wire:navigate>
                 {{ __('Dex') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('search')" :active="request()->routeIs('search')" wire:navigate>
-                {{ __('Search') }}
+            <x-responsive-nav-link :href="route('decks')" :active="request()->routeIs('decks')" wire:navigate>
+                {{ __('Decks') }}
             </x-responsive-nav-link>
         </div>
 

@@ -45,6 +45,11 @@ class Card extends Model
         ]);
     }
 
+    public function decks(): BelongsToMany
+    {
+        return $this->belongsToMany(Deck::class)->withPivot('id')->withTimestamps();
+    }
+
     public function rarity(): BelongsTo
     {
         return $this->belongsTo(Rarity::class);

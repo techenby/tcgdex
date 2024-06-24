@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -42,6 +43,15 @@ class User extends Authenticatable
     public function decks(): HasMany
     {
         return $this->hasMany(Deck::class);
+    }
+
+    public function collection()
+    {
+        return DB::table('card_user')
+            ->select(DB::raw('card_id, count(*) as count, max(id) as last_id'))
+            ->where('user_id', $this->id)
+            ->groupBy('card_id')
+            ->get();
     }
 
     /**

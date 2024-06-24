@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Card;
 use Livewire\Volt\Volt;
 
 it('can render', function () {
-    $component = Volt::test('pages.landing');
+    buildWorld(Card::class);
 
-    $component->assertSee('');
+    Volt::test('pages.landing')
+        ->assertOk();
 });

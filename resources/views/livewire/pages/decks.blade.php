@@ -2,11 +2,13 @@
 
 use App\Livewire\Forms\DeckForm;
 
-use function Livewire\Volt\{computed, form, layout, state};
+use function Livewire\Volt\{computed, form, layout, title};
 
+title('All Decks');
 layout('layouts.app');
 
 form(DeckForm::class);
+
 
 $decks = computed(fn () => auth()->user()->decks()->withCount('cards')->get());
 
@@ -47,7 +49,8 @@ $delete = function ($id) {
             <tr>
                 <x-table.td>{{ $deck->name }}</x-table.td>
                 <x-table.td>{{ $deck->cards_count }}</x-table.td>
-                <x-table.td>
+                <x-table.td class="space-x-2">
+                    <a href="{{ route('decks.edit', $deck) }}">Edit</a>
                     <button type="button" wire:click="delete({{ $deck->id }})">
                         Delete
                     </button>

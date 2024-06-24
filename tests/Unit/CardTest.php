@@ -1,23 +1,23 @@
 <?php
 
 use App\Models\Card;
-use Database\Seeders\SetsSeeder;
+use App\Models\Set;
 
 test('can create card from api data', function () {
-    $this->seed(SetsSeeder::class);
+    buildWorld(Set::class);
 
-    $cardData = json_decode(file_get_contents(__DIR__ . '/../cards.json'), true)[0];
+    $cardData = json_decode(file_get_contents(__DIR__ . '/../api-card.json'), true)[0];
 
     $card = Card::createFromApi($cardData);
 
     expect($card->external_id)->toBe('hgss4-1')
         ->and($card->rarity)->toBe('Rare Holo')
         ->and($card->supertype)->toBe('Pokémon')
-        ->and($card->set_id)->toBe('hgss4')
+        ->and($card->set_id)->toBe(61)
         ->and($card->name)->toBe('Aggron')
         ->and($card->hp)->toBe('140')
-        ->and($card->types)->toBe(['Metal'])
-        ->and($card->subtypes)->toBe(['Stage 2'])
+        ->and($card->types->first())->toBe('Metal')
+        ->and($card->subtypes->first())->toBe('Stage 2')
         ->and($card->converted_retreat_cost)->toBe(4)
         ->and($card->number)->toBe('1')
         ->and($card->artist)->toBe('Kagemaru Himeno')

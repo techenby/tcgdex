@@ -14,6 +14,10 @@ Volt::route('decks', 'pages.decks')
     ->middleware(['auth', 'verified'])
     ->name('decks');
 
+Volt::route('decks/{id}', 'pages.decks.edit')
+    ->middleware(['auth', 'verified'])
+    ->name('decks.edit');
+
 Volt::route('dex', 'pages.dex')
     ->middleware(['auth', 'verified'])
     ->name('dex');

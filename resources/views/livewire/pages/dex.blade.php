@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\Card;
 use Illuminate\Support\Facades\DB;
 
-use function Livewire\Volt\{computed, layout, mount, state, usesPagination};
+use function Livewire\Volt\{computed, layout, mount, state, title, usesPagination};
 
 usesPagination();
 
+title('Card Collection');
 layout('layouts.app');
 
 mount(function () {

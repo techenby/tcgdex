@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Card;
+use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
@@ -49,7 +51,16 @@ function buildWorld()
     foreach (func_get_args() as $class) {
         $string = Str::plural(strtolower(class_basename($class)));
         $path = base_path("tests/{$string}.json");
-        $records = json_decode(file_get_contents($path), true);
+
+        $records = collect(json_decode(file_get_contents($path), true))
+            ->when($class === Card::class, fn ($collection) => $collection->map(function ($row) use ($class) {
+                foreach ($class::casts() as $key => $cast) {
+                    if ($cast === AsCollection::class || 'array') {
+                        $row[$key] = json_decode($row[$key], true);
+                    }
+                }
+                return $row;
+            }));
         $class::factory()->createMany($records);
     }
 }
