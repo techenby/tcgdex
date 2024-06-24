@@ -19,8 +19,12 @@ $create = function () {
 };
 
 $delete = function ($id) {
-    $this->decks->firstWhere('id', $id)->delete();
-    $this->emit('$refresh');
+    $deck = $this->decks->firstWhere('id', $id);
+
+    if ($deck) {
+        $deck->delete();
+        unset($this->decks);
+    }
 };
 
 ?>
@@ -48,7 +52,7 @@ $delete = function ($id) {
             </tr>
         </x-slot:thead>
         <x-slot:tbody>
-            @foreach ($this->decks as $deck)
+            @forelse ($this->decks as $deck)
             <tr>
                 <x-table.td>{{ $deck->name }}</x-table.td>
                 <x-table.td>{{ $deck->cards->where('supertype', 'Pokémon')->count() }}</x-table.td>
@@ -62,7 +66,11 @@ $delete = function ($id) {
                     </button>
                 </x-table.td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <x-table.td colspan="6">No decks</x-table.td>
+            </tr>
+            @endforelse
         </x-slot:tbody>
     </x-table>
 </x-ui.container>
