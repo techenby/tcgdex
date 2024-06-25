@@ -30,7 +30,7 @@ $sub = fn ($pivotId) => DB::table('card_user')->whereId($pivotId)->delete();
 ?>
 
 <div>
-    <x-ui.container class="space-y-8 mb-12">
+    <x-ui.container class="space-y-8 mb-24">
         <div class="flex items-center justify-between space-x-4">
             <x-form.search class="w-full sm:w-3/5 md:w-1/3" />
             <span class="isolate inline-flex rounded-md shadow-sm">

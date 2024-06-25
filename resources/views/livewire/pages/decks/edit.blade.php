@@ -17,13 +17,10 @@ mount(function ($id) {
     $this->deck = Deck::find($id);
 });
 
+$collection = computed(fn () => $this->deck->collection());
 $deckCards = computed(fn () => $this->deck->cards->unique());
 
-$collection = computed(fn () => $this->deck->collection());
-$searchedCards = computed(fn () => Card::search($this->query)->paginate(10));
-
 $add = fn ($cardId) => $this->deck->cards()->attach($cardId);
-
 $sub = fn ($pivotId) => DB::table('card_deck')->whereId($pivotId)->delete();
 
 $setStyle = function ($style) {
@@ -57,37 +54,13 @@ $setStyle = function ($style) {
         </x-ui.container>
     </div>
 
-    <x-ui.container class="space-y-12" without-y-padding>
+    <x-ui.container class="space-y-12 mb-24" without-y-padding>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
             @foreach ($this->deckCards as $deckCard)
             <x-card :wire:key="$deckCard->id" :card=$deckCard :collection="$this->collection" />
             @endforeach
         </div>
-
-        <div @class([
-            'bg-white dark:bg-gray-800 dark:border dark:border-gray-700 p-8 rounded-t-2xl shadow space-y-8 relative',
-        ])>
-            <span class="absolute -top-4 shadow bg-white px-3 py-2 dark:text-gray-100 dark:bg-gray-800 text-sm dark:border dark:border-gray-700 rounded-full">Add Cards to Deck</span>
-            <form wire:submit="search" class="relative max-w-md mx-auto rounded-full ">
-                <x-form.search />
-            </form>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                @if ($query !== '')
-                @foreach ($this->searchedCards as $searchedCard)
-                <x-card :wire:key="$searchedCard->id" :card=$searchedCard :collection="$this->collection" />
-                @endforeach
-                @else
-                <x-fake-card />
-                <x-fake-card class="[animation-delay:_0.5s]" />
-                <x-fake-card class="[animation-delay:_1s]"/>
-                <x-fake-card class="[animation-delay:_1.5s]"/>
-                <x-fake-card class="[animation-delay:_2s] hidden lg:block" />
-                @endif
-            </div>
-            @if ($query !== '')
-            {{ $this->searchedCards->links() }}
-            @endif
-        </div>
     </x-ui.container>
+
+    <livewire:search-cards :model="$deck" />
 </div>
