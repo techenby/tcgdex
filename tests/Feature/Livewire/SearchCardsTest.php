@@ -1,9 +1,9 @@
 <?php
 
+use App\Models\User;
 use Livewire\Volt\Volt;
 
 it('can render', function () {
-    $component = Volt::test('search-cards');
-
-    $component->assertSee('');
+    Volt::test('search-cards', ['model' => User::factory()->create()])
+        ->assertSee('Add Card to Collection');
 });
