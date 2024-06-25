@@ -59,7 +59,7 @@ $setStyle = function ($style) {
 
     <x-ui.container class="space-y-12">
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            @foreach($this->deckCards as $deckCard)
+            @foreach ($this->deckCards as $deckCard)
             <x-card :wire:key="$deckCard->id" :card=$deckCard :collection="$this->collection" />
             @endforeach
         </div>
