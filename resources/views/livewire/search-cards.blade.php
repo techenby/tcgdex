@@ -34,7 +34,7 @@ $sub = function ($pivotId) {
 
 <div class="fixed bottom-0 w-full">
     <x-ui.container without-y-padding>
-        <div x-data="{expanded: false}" @class(['min-h-8 bg-white dark:bg-gray-800 dark:border dark:border-gray-700 px-8 rounded-t-2xl shadow relative'])>
+        <div x-data="{expanded: false}" @class(['min-h-8 bg-white dark:bg-gray-800 dark:border dark:border-gray-700 px-8 rounded-t-2xl drop-shadow-3xl relative'])>
             <button @click="expanded = ! expanded" class="z-10 absolute -top-4 shadow bg-white px-3 py-2 dark:text-gray-100 dark:bg-gray-800 text-sm dark:border dark:border-gray-700 rounded-full">
                 {{ $label }}
             </button>
