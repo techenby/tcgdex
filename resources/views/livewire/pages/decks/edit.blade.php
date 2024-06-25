@@ -35,7 +35,7 @@ $setStyle = function ($style) {
 
 <div>
     <div class="bg-white dark:bg-gray-800 py-2 border-t border-gray-300 dark:border-gray-700 shadow mb-8">
-        <x-ui.container>
+        <x-ui.container without-y-padding>
             <dl class="grid grid-cols-4 divide-x divide-gray-300 dark:divide-gray-700">
                 <div class="pr-4">
                     <dt class="text-sm text-gray-500 dark:text-gray-400">Pokémon</dt>
@@ -57,7 +57,7 @@ $setStyle = function ($style) {
         </x-ui.container>
     </div>
 
-    <x-ui.container class="space-y-12">
+    <x-ui.container class="space-y-12" without-y-padding>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
             @foreach ($this->deckCards as $deckCard)
             <x-card :wire:key="$deckCard->id" :card=$deckCard :collection="$this->collection" />
