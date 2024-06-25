@@ -14,13 +14,12 @@
     </div>
     <div class="absolute inset-x-0 flex items-center justify-between px-4 -bottom-2 h-8">
         <x-btn.icon-pill wire:click="add('{{ $card->id }}')" wire:loading.attr="disabled" icon="heroicon-o-plus-small" class="opacity-0 group-hover:opacity-100">Add</x-btn.icon-pill>
-        @isset($card->pivot)
-        <div class="size-8 flex items-center justify-center shadow bg-white dark:text-gray-100 dark:bg-gray-800 border-2 rounded-full">{{ $card['count'] }}</div>
-        <x-btn.icon-pill wire:click="sub('{{ $card->pivot->id }}')" wire:loading.attr="disabled" icon="heroicon-o-minus-small" class="opacity-0 group-hover:opacity-100">Remove</x-btn.icon-pill>
-        @endisset
         @if (isset($collection) && $collection->firstWhere('card_id', $card->id) !== null)
         <div class="size-8 flex items-center justify-center shadow bg-white dark:text-gray-100 dark:bg-gray-800 border-2 rounded-full">{{ $collection->firstWhere('card_id', $card->id)->count }}</div>
         <x-btn.icon-pill wire:click="sub('{{ $collection->firstWhere('card_id', $card->id)->last_id }}')" wire:loading.attr="disabled" icon="heroicon-o-minus-small" class="opacity-0 group-hover:opacity-100">Remove</x-btn.icon-pill>
+        @elseif (isset($card->pivot))
+        <div class="size-8 flex items-center justify-center shadow bg-white dark:text-gray-100 dark:bg-gray-800 border-2 rounded-full">{{ $card['count'] }}</div>
+        <x-btn.icon-pill wire:click="sub('{{ $card->pivot->id }}')" wire:loading.attr="disabled" icon="heroicon-o-minus-small" class="opacity-0 group-hover:opacity-100">Remove</x-btn.icon-pill>
         @endif
     </div>
 </div>
