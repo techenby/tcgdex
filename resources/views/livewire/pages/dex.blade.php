@@ -17,17 +17,7 @@ mount(function () {
 state(['style', 'query' => '']);
 
 $collection = computed(fn () => auth()->user()->collection());
-$searchedCards = computed(fn () => Card::search($this->query)->paginate(10));
-
-$cards = computed(function () {
-    return auth()->user()->cards()
-        ->when(!empty($this->query), fn ($query) => $query->where('name', 'like', '%' . $this->query . '%'))
-        ->get()->load('set')->groupBy("id")->map(function ($group) {
-            $last = $group->last();
-            $last->count = $group->count();
-            return $last;
-        });
-});
+$cards = computed(fn () => auth()->user()->cards->unique()->load('set'));
 
 $setStyle = function ($style) {
     session()->put('dex.style', $style);
@@ -60,7 +50,7 @@ $sub = fn ($pivotId) => DB::table('card_user')->whereId($pivotId)->delete();
         @if ($style === 'grid')
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
             @foreach ($this->cards as $card)
-            <x-card :card=$card wire:key="{{ $card->id }}" />
+            <x-card :card=$card :collection="$this->collection" wire:key="{{ $card->id }}" />
             @endforeach
         </div>
         @else
@@ -111,30 +101,5 @@ $sub = fn ($pivotId) => DB::table('card_user')->whereId($pivotId)->delete();
         @endif
     </x-ui.container>
 
-    <div class="absolute bottom-0 w-full sticky max-h-[50vh]">
-        <x-ui.container without-y-padding>
-            <div x-data="{expanded: false}" @class(['bg-white dark:bg-gray-800 dark:border dark:border-gray-700 p-8 rounded-t-2xl shadow relative'])>
-                <button @click="expanded = ! expanded" class="absolute -top-4 shadow bg-white px-3 py-2 dark:text-gray-100 dark:bg-gray-800 text-sm dark:border dark:border-gray-700 rounded-full">Add Cards to Collection</button>
-                <div x-show="expanded" class="space-y-8">
-                    <form wire:submit="search" class="relative max-w-md mx-auto rounded-full ">
-                        <x-form.search />
-                    </form>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                        @if ($query !== '')
-                        @foreach ($this->searchedCards as $searchedCard)
-                        <x-card :wire:key="$searchedCard->id" :card=$searchedCard :collection="$this->collection" />
-                        @endforeach
-                        @else
-                        <x-fake-card />
-                        <x-fake-card class="[animation-delay:_0.5s]" />
-                        <x-fake-card class="[animation-delay:_1s]" />
-                        <x-fake-card class="[animation-delay:_1.5s]" />
-                        <x-fake-card class="[animation-delay:_2s] hidden lg:block" />
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </x-ui.container>
-    </div>
+    <livewire:search-cards :model="auth()->user()" />
 </div>
