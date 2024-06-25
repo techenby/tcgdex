@@ -1,10 +1,9 @@
 <?php
 
-use App\Models\Card;
 use App\Models\Deck;
 use Illuminate\Support\Facades\DB;
 
-use function Livewire\Volt\{computed, layout, mount, state, title, usesPagination};
+use function Livewire\Volt\{computed, layout, mount, on, state, title, usesPagination};
 
 usesPagination();
 
@@ -16,6 +15,14 @@ state(['deck', 'query' => '', 'style']);
 mount(function ($id) {
     $this->deck = Deck::find($id);
 });
+
+on(['added' => function () {
+    unset($this->collection);
+    unset($this->cards);
+}, 'subtracted' => function () {
+    unset($this->collection);
+    unset($this->cards);
+}]);
 
 $collection = computed(fn () => $this->deck->collection());
 $deckCards = computed(fn () => $this->deck->cards->unique());

@@ -3,7 +3,7 @@
 use App\Models\Card;
 use Illuminate\Support\Facades\DB;
 
-use function Livewire\Volt\{computed, layout, mount, state, title, usesPagination};
+use function Livewire\Volt\{computed, layout, mount, on, state, title, usesPagination};
 
 usesPagination();
 
@@ -13,6 +13,14 @@ layout('layouts.app');
 mount(function () {
     $this->style = session('dex.style', 'table');
 });
+
+on(['added' => function () {
+    unset($this->collection);
+    unset($this->cards);
+}, 'subtracted' => function () {
+    unset($this->collection);
+    unset($this->cards);
+}]);
 
 state(['style', 'query' => '']);
 
@@ -24,8 +32,14 @@ $setStyle = function ($style) {
     $this->style = $style;
 };
 
-$add = fn ($cardId) => auth()->user()->cards()->attach($cardId);
-$sub = fn ($pivotId) => DB::table('card_user')->whereId($pivotId)->delete();
+$add = function ($cardId) {
+    auth()->user()->cards()->attach($cardId);
+    $this->dispatch('added');
+};
+$sub = function ($pivotId) {
+    DB::table('card_user')->whereId($pivotId)->delete();
+    $this->dispatch('subtracted');
+};
 
 ?>
 

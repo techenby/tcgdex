@@ -5,7 +5,7 @@ use App\Models\Deck;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
-use function Livewire\Volt\{computed, mount, state, usesPagination};
+use function Livewire\Volt\{computed, mount, on, state, usesPagination};
 
 usesPagination();
 
@@ -18,23 +18,35 @@ mount(function () {
     };
 });
 
+on(['added' => function () {
+    unset($this->collection);
+    unset($this->cards);
+}, 'subtracted' => function () {
+    unset($this->collection);
+    unset($this->cards);
+}]);
+
 $collection = computed(fn () => $this->model->collection());
 $searchedCards = computed(fn () => Card::search($this->query)->paginate(10));
 
-$add = fn ($cardId) => $this->model->cards()->attach($cardId);
+$add = function ($cardId) {
+    $this->model->cards()->attach($cardId);
+    $this->dispatch('added');
+};
 $sub = function ($pivotId) {
     $table = match (get_class($this->model)) {
         User::class => 'card_user',
         Deck::class => 'card_deck',
     };
     DB::table($table)->whereId($pivotId)->delete();
+    $this->dispatch('subtracted');
 };
 
 ?>
 
 <div class="fixed bottom-0 w-full">
     <x-ui.container without-y-padding>
-        <div x-data="{expanded: false}" @class(['min-h-8 bg-white dark:bg-gray-800 dark:border dark:border-gray-700 px-8 rounded-t-2xl drop-shadow-3xl relative'])>
+        <div x-data="{expanded: false}"  @class(['min-h-8 bg-white dark:bg-gray-800 dark:border dark:border-gray-700 px-8 rounded-t-2xl drop-shadow-3xl relative'])>
             <button @click="expanded = ! expanded" class="z-10 absolute -top-4 shadow bg-white px-3 py-2 dark:text-gray-100 dark:bg-gray-800 text-sm dark:border dark:border-gray-700 rounded-full">
                 {{ $label }}
             </button>

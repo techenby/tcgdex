@@ -28,7 +28,7 @@ $logout = function (Logout $logout) {
                         {{ __('Search') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dex')" :active="request()->routeIs('dex')" wire:navigate>
-                        {{ __('CardDex') }}
+                        {{ __('Collection') }}
                     </x-nav-link>
                     <x-nav-link :href="route('decks')" :active="request()->routeIs('decks')" wire:navigate>
                         {{ __('Decks') }}
@@ -85,7 +85,7 @@ $logout = function (Logout $logout) {
                 {{ __('Search') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dex')" :active="request()->routeIs('dex')" wire:navigate>
-                {{ __('Dex') }}
+                {{ __('Collection') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('decks')" :active="request()->routeIs('decks')" wire:navigate>
                 {{ __('Decks') }}
