@@ -50,7 +50,7 @@ $sub = function ($pivotId) {
             <button @click="expanded = ! expanded" class="z-10 absolute -top-4 shadow bg-white px-3 py-2 dark:text-gray-100 dark:bg-gray-800 text-sm dark:border dark:border-gray-700 rounded-full">
                 {{ $label }}
             </button>
-            <div x-show="expanded" x-collapse class="space-y-8 max-h-[50vh] overflow-scroll pb-8 pt-8 -mx-8 px-8">
+            <div x-show="expanded" x-cloak x-collapse class="space-y-8 max-h-[50vh] overflow-scroll pb-8 pt-8 -mx-8 px-8">
                 <form wire:submit="search" class="relative max-w-md mx-auto rounded-full ">
                     <x-form.search />
                 </form>
