@@ -9,6 +9,6 @@ Keep track of your Pokémon card collection, decks and more.
 - If you can build a deck (virtually or physically)
 - Check if a deck is valid
 - Landing page
-- Add logo
 - Add by image (scan card on phone, look up matches then add to collection)
 - Collection or Dex? Which makes more sense?
+- Duplicate Dex or Deck Versions?

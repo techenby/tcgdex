@@ -8,6 +8,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -17,12 +20,13 @@
 </head>
 
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
+    <x-ui.size-helper />
     <header class="absolute inset-x-0 top-0 z-50">
         <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
             <div class="flex lg:flex-1">
-                <a href="#" class="-m-1.5 p-1.5">
-                    <span class="sr-only">Your Company</span>
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+                <a href="/" class="-m-1.5 p-1.5">
+                    <span class="sr-only">Trading Card Game Dex</span>
+                    <x-application-logo class="h-16 w-auto fill-current text-gray-900 dark:text-white" />
                 </a>
             </div>
             <div class="flex lg:hidden">
@@ -34,13 +38,12 @@
                 </button>
             </div>
             <div class="hidden lg:flex lg:gap-x-12">
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Product</a>
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Features</a>
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Marketplace</a>
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Company</a>
+                <a href="#search" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Search</a>
+                <a href="#features" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Features</a>
             </div>
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Log in <span aria-hidden="true">&rarr;</span></a>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end space-x-4">
+                <a href="/login" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Log in <span aria-hidden="true">&rarr;</span></a>
+                <a href="/register" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Create Account <span aria-hidden="true">&rarr;</span></a>
             </div>
         </nav>
 

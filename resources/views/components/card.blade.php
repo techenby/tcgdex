@@ -1,4 +1,4 @@
-<div id="{{ $card->external_id }}" class="group relative">
+<div id="{{ $card->external_id }}" {{ $attributes->twMerge('group relative') }}>
     <img src="{{ $card->images['small'] }}" alt="{{ $card->name }} - {{ $card->flavor_text ?? '' }}" class="shadow rounded-xl">
     <div class="sr-only">
         <dl>
@@ -13,7 +13,9 @@
         <p class="text-center text-white">{{ Str::padLeft($card->number, 3, 0) }}/{{ Str::padLeft($card->set->printed_total, 3, 0) }}</p>
     </div>
     <div class="absolute inset-x-0 flex items-center justify-between px-4 -bottom-2 h-8">
+        @auth
         <x-btn.icon-pill wire:click="add('{{ $card->id }}')" wire:loading.attr="disabled" icon="heroicon-o-plus-small" class="opacity-0 group-hover:opacity-100">Add</x-btn.icon-pill>
+        @endauth
         @if (isset($collection) && $collection->firstWhere('card_id', $card->id) !== null)
         <div class="size-8 flex items-center justify-center shadow bg-white dark:text-gray-100 dark:bg-gray-800 border-2 rounded-full">{{ $collection->firstWhere('card_id', $card->id)->count }}</div>
         <x-btn.icon-pill wire:click="sub('{{ $collection->firstWhere('card_id', $card->id)->last_id }}')" wire:loading.attr="disabled" icon="heroicon-o-minus-small" class="opacity-0 group-hover:opacity-100">Remove</x-btn.icon-pill>
