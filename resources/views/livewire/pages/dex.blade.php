@@ -70,12 +70,12 @@ $sub = function ($pivotId) {
     <x-ui.container class="space-y-8 mb-24">
         <div class="flex items-center justify-between space-x-4">
             <x-form.search class="w-full sm:w-3/5 md:w-1/3" />
-            <div>
-                <select wire:model.live="order" id="orderBy">
+            <div class="flex items-center space-x-4">
+                <x-form.select wire:model.live="order" id="orderBy">
                     <option value="supertype">Supertype</option>
                     <option value="hp">HP</option>
                     <option value="name">Name</option>
-                </select>
+                </x-form.select>
                 <x-btn.group>
                     <x-btn.secondary wire:click="setStyle('grid')" size="lg" class="rounded-r-none focus:z-10">
                         <x-heroicon-o-squares-2x2 class="-ml-0.5 h-5 w-5 text-gray-400" />
@@ -94,7 +94,7 @@ $sub = function ($pivotId) {
 
                 <div class="lg:col-span-4">
                     @if ($style === 'grid')
-                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 w-full">
+                    <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6 w-full">
                         @foreach ($this->cards as $card)
                         <x-card :card=$card :collection="$this->collection" wire:key="{{ $card->id }}" />
                         @endforeach
